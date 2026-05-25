@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "next build && wrangler pages deploy out --project-name=jevtech-web"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
+    "wrangler": "^4.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "autoprefixer": "^10.5.0",

@@ -7,13 +7,23 @@ import {
   ArrowDownToLine,
   ArrowRight,
   Circle,
+  Cloud,
+  Code2,
+  CreditCard,
   ExternalLink,
+  Github,
+  Globe,
   Home,
+  Linkedin,
+  Mail,
   Menu,
+  MessageSquare,
   Moon,
   Orbit,
+  Server,
   Sun,
   X,
+  Zap,
 } from "lucide-react"
 import {
   themeIds,
@@ -378,6 +388,44 @@ function HeroImage({ theme }: { theme: JevTheme }) {
   )
 }
 
+const services = [
+  {
+    icon: Globe,
+    title: "Full-Stack Web Development",
+    description: "End-to-end web applications built with React, Next.js, and modern frontend practices.",
+  },
+  {
+    icon: Server,
+    title: "Backend & API Development",
+    description: "Scalable server-side systems and REST APIs built with .NET and Node.js.",
+  },
+  {
+    icon: CreditCard,
+    title: "E-Commerce & Payments",
+    description: "Complete commerce platforms with Stripe and PayPal integration, carts, and order management.",
+  },
+  {
+    icon: Zap,
+    title: "Real-Time Systems",
+    description: "Live bidding, push notifications, and event-driven features built for performance under load.",
+  },
+  {
+    icon: Cloud,
+    title: "AWS Cloud Solutions",
+    description: "Cloud infrastructure, deployments, and managed services architected for reliability and scale.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Consulting & Architecture",
+    description: "Technical planning, system design, and hands-on guidance from idea to a buildable plan.",
+  },
+  {
+    icon: Code2,
+    title: "Code Review & Audits",
+    description: "Deep review of existing codebases — security, performance, structure, and practical recommendations.",
+  },
+]
+
 function HomePage({
   theme,
   activeTheme,
@@ -471,6 +519,36 @@ function HomePage({
 
                 <p className="mt-2 text-[11px] leading-5 opacity-70">
                   {copy}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 px-5 py-14 lg:px-8">
+        <div className="mx-auto max-w-[1160px]">
+          <h2 className="text-center text-[12px] font-black uppercase tracking-[.24em]">
+            Services
+          </h2>
+          <p className={cn("mt-2 text-center text-[11px] font-semibold uppercase tracking-[.18em]", theme.accentText)}>
+            What JevTech builds
+          </p>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {services.map(({ icon: Icon, title, description }) => (
+              <article
+                key={title}
+                className="rounded-md border border-current/12 bg-current/[.025] p-5 backdrop-blur-md"
+              >
+                <Icon className={theme.accentText} size={22} />
+
+                <h3 className="mt-4 text-[12px] font-black uppercase tracking-[.14em]">
+                  {title}
+                </h3>
+
+                <p className="mt-2 text-[11px] leading-5 opacity-70">
+                  {description}
                 </p>
               </article>
             ))}
@@ -854,6 +932,200 @@ function InteriorPage({
   )
 }
 
+function ContactPage({ theme }: { theme: JevTheme }) {
+  const [form, setForm] = useState({ name: "", email: "", message: "" })
+  const [honeypot, setHoneypot] = useState("")
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
+  const [errorMsg, setErrorMsg] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (honeypot) return // bot trap — silently bail
+    setSubmitStatus("sending")
+    setErrorMsg("")
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, website: honeypot }),
+      })
+      const data = await res.json()
+      if (res.ok && data.success) {
+        setSubmitStatus("success")
+        setForm({ name: "", email: "", message: "" })
+      } else {
+        setSubmitStatus("error")
+        setErrorMsg(data.error ?? "Something went wrong. Please try again.")
+      }
+    } catch {
+      setSubmitStatus("error")
+      setErrorMsg("Network error. Please try again.")
+    }
+  }
+
+  const inputClass =
+    theme.id === "light"
+      ? "w-full rounded-lg border border-black/25 bg-white/80 text-[#111111] px-4 py-3 text-sm placeholder:text-black/35 outline-none transition focus:border-black/50"
+      : "w-full rounded-lg border border-current/20 bg-white/[.07] px-4 py-3 text-sm placeholder:opacity-40 outline-none transition focus:border-current/50"
+
+  const links = [
+    { icon: Mail, label: "Email", display: "hello@jevtech.net", href: "mailto:hello@jevtech.net", external: false },
+    { icon: Github, label: "GitHub", display: "josh-everett01", href: "https://github.com/josh-everett01", external: true },
+    { icon: Linkedin, label: "LinkedIn", display: "joshua-everett", href: "https://www.linkedin.com/in/joshua-everett", external: true },
+  ]
+
+  return (
+    <main className="relative min-h-[calc(100vh-74px)] overflow-hidden px-5 py-14 lg:px-8">
+      <HeroImage theme={theme} />
+
+      <div className="relative z-10 mx-auto max-w-[960px]">
+        <Link
+          href="/"
+          className={cn(
+            "mb-8 inline-flex items-center gap-2 border px-4 py-3 text-[11px] font-black uppercase tracking-[.18em] transition",
+            theme.buttonClass
+          )}
+        >
+          <Home size={15} /> Back Home
+        </Link>
+
+        <div className="rounded-xl border border-current/12 bg-black/20 p-8 backdrop-blur-xl md:p-12">
+          <p className={cn("text-[11px] font-black uppercase tracking-[.32em]", theme.accentText)}>
+            Start the next build
+          </p>
+
+          <h1 className="mt-4 text-5xl font-black uppercase tracking-[-.04em] md:text-7xl">
+            Contact
+          </h1>
+
+          <p className="mt-7 max-w-2xl text-base leading-8 opacity-80">
+            Available for custom software projects, technical consulting, and systems architecture
+            work. Describe what you need and I&apos;ll get back to you.
+          </p>
+
+          {/* Contact form */}
+          {submitStatus === "success" ? (
+            <div className="mt-8 rounded-lg border border-current/12 bg-current/[.05] p-6 text-center">
+              <p className={cn("text-lg font-black uppercase tracking-[.06em]", theme.accentText)}>Message sent.</p>
+              <p className="mt-2 text-sm opacity-70">I&apos;ll be in touch soon.</p>
+              <button
+                onClick={() => setSubmitStatus("idle")}
+                className={cn("mt-5 border px-5 py-2.5 text-[11px] font-black uppercase tracking-[.18em] transition", theme.buttonClass)}
+              >
+                Send another
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} noValidate className="mt-8 grid gap-4">
+              {/* Honeypot — hidden from real users */}
+              <input
+                type="text"
+                name="website"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                aria-hidden="true"
+                className="absolute opacity-0 pointer-events-none"
+                autoComplete="off"
+              />
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label className="mb-1.5 block text-[10px] font-black uppercase tracking-[.18em] opacity-55">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Your name"
+                    value={form.name}
+                    onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <label className="mb-1.5 block text-[10px] font-black uppercase tracking-[.18em] opacity-55">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                    value={form.email}
+                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                    className={inputClass}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="mb-1.5 block text-[10px] font-black uppercase tracking-[.18em] opacity-55">
+                  Message
+                </label>
+                <textarea
+                  required
+                  rows={5}
+                  placeholder="Describe your project or what you need help with…"
+                  value={form.message}
+                  onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+                  className={cn(inputClass, "resize-none")}
+                />
+              </div>
+
+              {submitStatus === "error" && (
+                <p className="text-sm text-red-400">{errorMsg}</p>
+              )}
+
+              <div>
+                <button
+                  type="submit"
+                  disabled={submitStatus === "sending"}
+                  className={cn(
+                    "border px-7 py-3 text-[11px] font-black uppercase tracking-[.18em] transition disabled:opacity-50",
+                    theme.buttonClass
+                  )}
+                >
+                  {submitStatus === "sending" ? "Sending…" : "Send Message"}
+                </button>
+              </div>
+            </form>
+          )}
+
+          {/* Divider */}
+          <div className="mt-10 flex items-center gap-4 opacity-40">
+            <div className="h-px flex-1 bg-current/30" />
+            <span className="text-[10px] font-black uppercase tracking-[.22em]">Or reach out directly</span>
+            <div className="h-px flex-1 bg-current/30" />
+          </div>
+
+          {/* Link tiles */}
+          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+            {links.map(({ icon: Icon, label, display, href, external }) => (
+              <a
+                key={label}
+                href={href}
+                {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="flex items-center gap-4 rounded-lg border border-current/12 bg-current/[.035] p-5 transition hover:bg-current/[.07]"
+              >
+                <Icon className={cn("shrink-0", theme.accentText)} size={22} />
+                <div className="min-w-0">
+                  <p className="text-[10px] font-black uppercase tracking-[.18em] opacity-55">{label}</p>
+                  <p className="truncate text-sm font-semibold">{display}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-4 rounded-lg border border-current/12 bg-current/[.035] p-5 text-sm leading-7 opacity-80">
+            Best fit: e-commerce platforms, custom web apps, API and payment integrations, real-time
+            features, and projects that need a reliable path from idea to launch.
+          </div>
+        </div>
+      </div>
+    </main>
+  )
+}
+
 function Footer({ theme }: { theme: JevTheme }) {
   return (
     <footer className="relative z-20 border-t border-current/10 px-5 py-8 lg:px-8">
@@ -927,8 +1199,10 @@ export default function JevTechPortfolioHome() {
         />
       ) : currentPage === "projects" ? (
         <ProjectsPage theme={theme} />
+      ) : currentPage === "contact" ? (
+        <ContactPage theme={theme} />
       ) : (
-        <InteriorPage theme={theme} page={currentPage as "about" | "contact"} />
+        <InteriorPage theme={theme} page="about" />
       )}
 
       <Footer theme={theme} />
