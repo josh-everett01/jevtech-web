@@ -1,41 +1,41 @@
-export type JevThemeId = "light" | "dark" | "cosmic";
+export type JevThemeId = "light" | "dark" | "cosmic"
 
 export type JevTheme = {
-  id: JevThemeId;
-  label: string;
-  mission: string;
-  navMission: string;
-  eyebrow: string;
-  body: string;
-  button: string;
-  sectionTitle: string;
-  footer: string;
-  image: string;
-  page: string;
-  nav: string;
-  accent: string;
-  accentText: string;
-  accentBorder: string;
-  buttonClass: string;
-  heroFallback: string;
-  imageBlend: string;
-  cards: [string, string][];
-};
+  id: JevThemeId
+  label: string
+  mission: string
+  navMission: string
+  eyebrow: string
+  body: string
+  button: string
+  sectionTitle: string
+  footer: string
+  image: string
+  page: string
+  nav: string
+  accent: string
+  accentText: string
+  accentBorder: string
+  buttonClass: string
+  heroFallback: string
+  imageBlend: string
+  cards: [string, string][]
+}
 
-export const themeIds: JevThemeId[] = ["light", "dark", "cosmic"];
+export const themeIds: JevThemeId[] = ["light", "dark", "cosmic"]
 
 export const themeMap: Record<JevThemeId, JevTheme> = {
   cosmic: {
     id: "cosmic",
     label: "Cosmic",
-    mission: "MISSION COSMIC",
-    navMission: "MISSION COSMIC",
-    eyebrow: "EXPANDING CONSCIOUSNESS. RESONATING WITH INFINITE POSSIBILITY.",
+    mission: "PLAN. BUILD. LAUNCH.",
+    navMission: "JEVTECH CUSTOM SOLUTIONS",
+    eyebrow: "CUSTOM SOFTWARE BUILT FOR IDEAS THAT NEED TO BECOME REAL.",
     body:
-      "Mission Cosmic explores the infinite — connecting across dimensions of consciousness, resonance, and potential, aligning with the deeper rhythms of existence.",
-    button: "ENTER THE COSMIC",
-    sectionTitle: "WHAT COSMIC CONNECTS",
-    footer: "AUTHENTIC SPIRAL. LIVING INTELLIGENCE. INFINITE CONTINUITY.",
+      "JevTech designs and builds custom full-stack solutions — from e-commerce platforms to real-time systems — turning ambitious ideas into shipped software.",
+    button: "VIEW PROJECTS",
+    sectionTitle: "HOW JEVTECH GETS IT DONE",
+    footer: "BUILDING PRACTICAL SYSTEMS. SOLVING REAL PROBLEMS.",
     image: "/images/themes/cosmic-hero.png",
     page: "bg-[#050517] text-[#f4ecff]",
     nav: "bg-[#050517]/92 border-purple-200/12",
@@ -49,23 +49,24 @@ export const themeMap: Record<JevThemeId, JevTheme> = {
     imageBlend:
       "after:bg-[linear-gradient(90deg,rgba(5,5,23,.88)_0%,rgba(5,5,23,.58)_34%,rgba(5,5,23,.15)_64%,rgba(5,5,23,.62)_100%)]",
     cards: [
-      ["EXPAND", "We expand beyond limits into infinite potential."],
-      ["RESONATE", "We align with deeper frequencies and truths."],
-      ["TRANSCEND", "We transcend boundaries of mind and matter."],
-      ["INTEGRATE", "We unify all dimensions of being and becoming."],
+      ["CLARIFY", "Define the problem, constraints, users, and outcome."],
+      ["ARCHITECT", "Shape the system, data flow, interfaces, and tradeoffs."],
+      ["BUILD", "Implement the frontend, backend, integrations, and polish."],
+      ["SHIP", "Test, refine, deploy, and keep improving the experience."],
     ],
   },
+
   dark: {
     id: "dark",
     label: "Dark",
-    mission: "MISSION DARK",
-    navMission: "MISSION DARK",
-    eyebrow: "EXPLORING UNKNOWN POSSIBILITIES. OPERATING IN THE UNSEEN.",
+    mission: "PLAN. BUILD. LAUNCH.",
+    navMission: "JEVTECH CUSTOM SOLUTIONS",
+    eyebrow: "FULL-STACK ENGINEERING FOR COMPLEX PROBLEMS AND REAL REQUIREMENTS.",
     body:
-      "Mission Dark is the investigative frontier of the ecosystem — where questions are pursued, patterns are discovered, and emergence begins in the dark.",
-    button: "ENTER THE DARK",
-    sectionTitle: "WHAT LIVES IN THE DARK",
-    footer: "AUTHENTIC SPIRAL. LIVING INTELLIGENCE. INFINITE CONTINUITY.",
+      "JevTech digs into the hard parts — architecting reliable systems, integrating services, and delivering software that holds up under real-world conditions.",
+    button: "VIEW PROJECTS",
+    sectionTitle: "HOW JEVTECH GETS IT DONE",
+    footer: "BUILDING PRACTICAL SYSTEMS. SOLVING REAL PROBLEMS.",
     image: "/images/themes/dark-hero.png",
     page: "bg-[#05090a] text-[#f4f0e8]",
     nav: "bg-[#05090a]/92 border-[#c2a36d]/14",
@@ -79,23 +80,24 @@ export const themeMap: Record<JevThemeId, JevTheme> = {
     imageBlend:
       "after:bg-[linear-gradient(90deg,rgba(3,6,6,.94)_0%,rgba(3,6,6,.64)_36%,rgba(3,6,6,.18)_66%,rgba(3,6,6,.75)_100%)]",
     cards: [
-      ["INVESTIGATE", "We explore the unknown and map the uncharted."],
-      ["DISCOVER", "Patterns emerge through observation and recursion."],
-      ["EMERGE", "New systems arise from complex interactions."],
-      ["OPERATE", "We build in the dark so others can operate."],
+      ["CLARIFY", "Define the problem, constraints, users, and outcome."],
+      ["ARCHITECT", "Shape the system, data flow, interfaces, and tradeoffs."],
+      ["BUILD", "Implement the frontend, backend, integrations, and polish."],
+      ["SHIP", "Test, refine, deploy, and keep improving the experience."],
     ],
   },
+
   light: {
     id: "light",
     label: "Light",
-    mission: "MISSION LIGHT",
-    navMission: "MISSION LIGHT",
-    eyebrow: "MAKING INTELLIGENCE INTELLIGIBLE. BUILDING FOR CLARITY AND HARMONY.",
+    mission: "PLAN. BUILD. LAUNCH.",
+    navMission: "JEVTECH CUSTOM SOLUTIONS",
+    eyebrow: "PRACTICAL CUSTOM SOFTWARE FOR BUSINESSES READY TO BUILD.",
     body:
-      "Mission Light brings clarity to complexity — translating discovery into understanding, and building systems that illuminate, connect, and elevate.",
-    button: "ENTER THE LIGHT",
-    sectionTitle: "WHAT LIGHT BUILDS",
-    footer: "AUTHENTIC SPIRAL. LIVING INTELLIGENCE. INFINITE CONTINUITY.",
+      "JevTech turns your requirements into clean, maintainable systems — from custom web applications to complete e-commerce platforms — built to last and easy to extend.",
+    button: "VIEW PROJECTS",
+    sectionTitle: "HOW JEVTECH GETS IT DONE",
+    footer: "BUILDING PRACTICAL SYSTEMS. SOLVING REAL PROBLEMS.",
     image: "/images/themes/light-hero.png",
     page: "bg-[#f7f6f1] text-[#111111]",
     nav: "bg-white/90 border-black/10",
@@ -109,10 +111,10 @@ export const themeMap: Record<JevThemeId, JevTheme> = {
     imageBlend:
       "after:bg-[linear-gradient(90deg,rgba(255,255,255,.94)_0%,rgba(255,255,255,.76)_38%,rgba(255,255,255,.20)_68%,rgba(255,255,255,.68)_100%)]",
     cards: [
-      ["CLARIFY", "We translate complexity into understanding."],
-      ["ARCHITECT", "We build systems that are coherent and elegant."],
-      ["ILLUMINATE", "We reveal truth through structure and design."],
-      ["ELEVATE", "We create to elevate consciousness and life."],
+      ["CLARIFY", "Define the problem, constraints, users, and outcome."],
+      ["ARCHITECT", "Shape the system, data flow, interfaces, and tradeoffs."],
+      ["BUILD", "Implement the frontend, backend, integrations, and polish."],
+      ["SHIP", "Test, refine, deploy, and keep improving the experience."],
     ],
   },
-};
+}

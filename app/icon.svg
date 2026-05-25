@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 89">
+  <!-- Background -->
+  <rect width="144" height="89" rx="10" fill="#050517"/>
+
+  <!-- Fibonacci rectangle grid -->
+  <g fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.7">
+    <rect x="55" y="0" width="89" height="89"/>
+    <rect x="0" y="34" width="55" height="55"/>
+    <rect x="0" y="0" width="34" height="34"/>
+    <rect x="34" y="0" width="21" height="21"/>
+    <rect x="42" y="21" width="13" height="13"/>
+    <rect x="34" y="26" width="8" height="8"/>
+  </g>
+
+  <!-- Golden spiral -->
+  <g fill="none" stroke="#c47cff" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M55 89 A89 89 0 0 0 144 0"/>
+    <path d="M0 34 A55 55 0 0 0 55 89"/>
+    <path d="M34 0 A34 34 0 0 0 0 34"/>
+    <path d="M55 21 A21 21 0 0 0 34 0"/>
+    <path d="M42 34 A13 13 0 0 0 55 21"/>
+    <path d="M34 26 A8 8 0 0 0 42 34"/>
+  </g>
+
+  <!-- Center pivot dot -->
+  <circle cx="39" cy="30" r="3.4" fill="#c47cff"/>
+</svg>
