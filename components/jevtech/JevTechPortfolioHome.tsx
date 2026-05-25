@@ -453,13 +453,17 @@ function HomePage({
             <p
               className={cn(
                 "mb-5 text-[11px] font-black uppercase tracking-[.34em]",
-                theme.accentText
+                theme.accentText,
+                theme.id !== "light" && "[text-shadow:0_1px_8px_rgba(0,0,0,0.85)]"
               )}
             >
               {theme.navMission}
             </p>
 
-            <h1 className="text-[2.85rem] font-black uppercase leading-[.92] tracking-[-.055em] md:text-[3.7rem]">
+            <h1 className={cn(
+              "text-[2.85rem] font-black uppercase leading-[.92] tracking-[-.055em] md:text-[3.7rem]",
+              theme.id !== "light" && "[text-shadow:0_2px_16px_rgba(0,0,0,0.7)]"
+            )}>
               {theme.mission.split(" ").map((word) => (
                 <span key={word} className="block">
                   {word}
@@ -467,11 +471,17 @@ function HomePage({
               ))}
             </h1>
 
-            <p className="mt-6 text-[13px] font-black uppercase leading-6 tracking-[.09em]">
+            <p className={cn(
+              "mt-6 text-[13px] font-black uppercase leading-6 tracking-[.09em]",
+              theme.id !== "light" && "[text-shadow:0_1px_10px_rgba(0,0,0,0.9)]"
+            )}>
               {theme.eyebrow}
             </p>
 
-            <p className="mt-6 max-w-[300px] text-[13px] leading-6 opacity-78">
+            <p className={cn(
+              "mt-6 max-w-[300px] text-[13px] leading-6 opacity-78",
+              theme.id !== "light" && "[text-shadow:0_1px_10px_rgba(0,0,0,0.9)]"
+            )}>
               {theme.body}
             </p>
 
