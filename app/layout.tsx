@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "JevTech Portfolio",
-  description: "JevTech portfolio with Light, Dark, and Cosmic mission themes.",
+  title: "JevTech Custom Solutions",
+  description: "Custom full-stack software — web applications, e-commerce platforms, APIs, and real-time systems. Plan. Build. Launch.",
 };
 
 export default function RootLayout({
